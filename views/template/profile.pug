@@ -1,0 +1,11 @@
+extends includes/sidebar
+
+block body 
+  +breadcrumb("Home","User")
+  +navigation
+
+  +heading('User Profile')
+  +subheading('View and edit your profile details.')
+
+  +formInput('Full Name', 'ARK')
+  +formInput('Email', 'email@example.com')

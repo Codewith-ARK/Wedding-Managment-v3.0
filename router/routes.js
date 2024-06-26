@@ -1,6 +1,6 @@
 const express = require("express")
 const path = require("path");
-const { renderDashboard, renderUserVenues,renderReservations } = require("../utils/renderHTML");
+const { renderDashboard, renderUserVenues,renderReservations,renderUserProfile } = require("../utils/renderHTML");
 
 const router = express.Router();
 
@@ -28,6 +28,10 @@ router.get("/venues", (req, res) => {
 
 router.get("/user/reservations", (req, res) => {
   res.send(renderReservations());
+});
+
+router.get('/user/account',(req,res)=>{
+  res.send(renderUserProfile());
 });
 
 module.exports = router;

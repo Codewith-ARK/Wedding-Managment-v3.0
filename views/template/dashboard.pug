@@ -1,4 +1,9 @@
 extends includes/sidebar
 
 block body
-  h1(class="text-5xl font-bold") Dashboard
+  +breadcrumb('Home')
+  +navigation()
+
+  +heading('Dashboard')
+  +subheading('Discover the most important things.')
+

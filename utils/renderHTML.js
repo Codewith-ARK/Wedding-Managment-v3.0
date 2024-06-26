@@ -17,4 +17,8 @@ function renderReservations(){
   return renderHtmlFile('reservations.pug');
 }
 
-module.exports = {renderDashboard, renderUserVenues, renderReservations};
+function renderUserProfile(){
+  return renderHtmlFile('profile.pug');
+}
+
+module.exports = {renderDashboard, renderUserVenues, renderReservations,renderUserProfile};

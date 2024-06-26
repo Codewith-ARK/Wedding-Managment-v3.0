@@ -8800,6 +8800,10 @@ html:has(.drawer-open.drawer-open) {
   width: 100vw;
 }
 
+.max-w-xs {
+  max-width: 20rem;
+}
+
 .flex-shrink {
   flex-shrink: 1;
 }
