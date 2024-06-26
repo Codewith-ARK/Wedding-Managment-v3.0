@@ -13,4 +13,8 @@ function renderUserVenues(){
   return renderHtmlFile('venues.pug');
 }
 
-module.exports = {renderDashboard, renderUserVenues};
+function renderReservations(){
+  return renderHtmlFile('reservations.pug');
+}
+
+module.exports = {renderDashboard, renderUserVenues, renderReservations};

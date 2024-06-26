@@ -1,0 +1,22 @@
+extends includes/sidebar
+mixin listItem
+  div(class="border-b py-3 flex gap-3")
+    img(src="https://placehold.co/240x180" class="rounded-xl" alt="dummy image")
+    .flex.flex-col
+      h1.text-4xl.font-bold Text
+      p Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+    div(class="flex flex-grow items-end justify-end gap-3")
+      a(href="/").btn View Details
+      a(href="/").btn.btn-outline.btn-error Cancel
+
+block body
+  +breadcrumb('Home',"Reservations")
+  +navigation()
+  
+  +heading('Reservations')
+  +subheading('View all your reservations.')
+  
+  +listItem()
+  +listItem()
+  +listItem()
+
