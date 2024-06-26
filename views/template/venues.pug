@@ -1,0 +1,20 @@
+extends includes/sidebar
+
+mixin card
+  div(class="card card-compact")
+    img(class="rounded-xl aspect-square object-cover w-full" src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes")
+    div(class="card-body")
+      h2(class="card-title") Shoes!
+      p If a dog chews shoes whose shoes does he choose?
+      div(class="card-actions justify-end")
+        button(class="btn btn-outline") View Details
+
+
+block body
+  h1(class="text-5xl font-bold") Venues
+  div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4")
+    +card
+    +card
+    +card
+    +card
+    +card
