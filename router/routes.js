@@ -1,5 +1,6 @@
 const express = require("express")
 const path = require("path");
+const { renderDashboard } = require("../utils/renderHTML");
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.post("/", (req, res) => {
 });
 
 router.get("/dashboard", (req, res) => {
-  res.send("Welcome to Dashboard");
+  res.send(renderDashboard());
 });
 
 
