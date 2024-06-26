@@ -1,0 +1,12 @@
+extends ../includes/sidebar
+
+block body
+  +breadcrumb('Home','Admin','Venues', 'Add Venue')
+  +navigation()
+
+  +heading('Add Venue')
+  +subheading('Add a new venue')
+
+  +formInput('Venue Name', '')
+  +formInput('Venue Area', '')
+  +formInput('Venue Address', '')

@@ -18,6 +18,10 @@ router.post("/", (req, res) => {
   }
 });
 
+router.post('/signup',(req,res)=>{
+
+});
+
 router.get("/dashboard", (req, res) => {
   res.send(renderDashboard());
 });

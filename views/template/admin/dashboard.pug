@@ -1,0 +1,22 @@
+extends ../includes/sidebar
+
+mixin adminCard(text, link)
+  a(href=link class="btn w-full")
+    h2=text
+
+    
+
+block body
+  +breadcrumb('Home','Admin')
+  +navigation()
+
+  +heading('Admin Dashboard')
+  +subheading('...')
+
+  div(class="grid grid-cols-4 gap-4")
+    +adminCard('View Venue','admin/venue/view')
+    +adminCard('Add Venue','admin/venue/edit/')
+    +adminCard('Edit Venue','admin/venue/edit/')
+    +adminCard('Delete Venue','admin/venue/delete/')
+
+

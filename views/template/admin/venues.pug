@@ -1,0 +1,16 @@
+extends ../includes/sidebar
+
+block body
+  +breadcrumb('Home','Admin','Venues')
+  +navigation()
+
+  +heading('Venues')
+  +subheading('Browse all available venues and edit them.')
+
+  div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4")
+    +card()
+    +card()
+    +card()
+    +card()
+    +card()
+

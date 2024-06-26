@@ -15,7 +15,17 @@ mixin navigation()
   a.btn.btn-sm Go back
 
 mixin formInput(labelText, value)
+  div 
     label(for="" class="form-control w-full max-w-xs") 
     .label 
       label(for="" class="label-text")=labelText
     input(type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" value=value)
+
+mixin card
+  div(class="card card-compact")
+    img(class="rounded-xl aspect-square object-cover w-full" src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes")
+    div(class="card-body")
+      h2(class="card-title") Shoes!
+      p If a dog chews shoes whose shoes does he choose?
+      div(class="card-actions justify-end")
+        button(class="btn btn-outline") View Details
