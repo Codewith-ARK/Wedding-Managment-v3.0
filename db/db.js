@@ -63,6 +63,28 @@ DB.createUser = async (data) => {
   }
 }
 
+DB.fetchUser = async (userEmail) => {
+  const query = `SELECT * FROM users WHERE email = ?`;
+
+  try {
+    const row = await new Promise((resolve, reject) => {
+      db.get(query, [userEmail], (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row);
+        }
+      });
+    });
+
+    return row; // Return the fetched row
+  } catch (err) {
+    throw err; // Re-throw the error for handling elsewhere
+  }
+};
+
+
+
 DB.fetchAllUsers = () => {
   const query = `SELECT * FROM users`;
 

@@ -2,6 +2,7 @@ const express = require("express")
 const path = require("path");
 const { renderDashboard, renderUserVenues,renderReservations,renderUserProfile } = require("../utils/renderHTML");
 const DB = require("../db/db");
+const auth = require("../utils/auth");
 
 const router = express.Router();
 
@@ -13,13 +14,32 @@ router.get('/login', (req, res)=>{
   res.sendFile(path.join(__dirname, "..", "views", "pages", "index.html"));
 });
 
-router.post("/login", (req, res) => {
-  const isOkay = auth(req.body);
+router.post("/login", async (req, res) => {
+  try {
+    const userData = await DB.fetchUser(req.body.email);
+    if (userData === null) {
+      res.status(400).json({ status: 404, message: "Can not requested user." });
+    }
 
-  if (isOkay) {
-    res.redirect("/dashboard");
-  } else {
-    res.redirect("/");
+    const result = await auth(
+      req.body.email,
+      req.body.password,
+      userData.email,
+      userData.password
+    );
+
+    if (result) {
+      res.status(200).json({ status: 200, data: {userId: userData.user_id, userType: userData.user_type} });
+    } else {
+      res
+        .status(404)
+        .json({
+          status: 404,
+          message: "Error authenticating: Incorrect email or passsword",
+        });
+    }
+  } catch (error) {
+    console.error("Error at login: ", error);
   }
 });
 

@@ -17,11 +17,13 @@ if (location.href.includes("/login")) {
       .then((res) => res.json())
       .then((res) => {
         if (res.status === 200) {
+          sessionStorage.setItem('userId', res.data.userId);
+          sessionStorage.setItem('userType', res.data.userType);
           window.location.href = "/dashboard";
         } else {
           document.querySelector("#errorBox").textContent = res.message;
         }
-      });
+      });    
   });
 }
 
