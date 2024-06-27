@@ -4,11 +4,11 @@ include mixin
 div(class="drawer lg:drawer-open")
   input#my-drawer.drawer-toggle(type='checkbox')
   .drawer-content
-    label(for='my-drawer' class="drawer-button btn btn-primary absolute left-0 rounded-s-sm")
+    label(for='my-drawer' class="drawer-button btn btn-primary absolute left-0 rounded-none rounded-br-lg")
       svg(width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current md:h-6 md:w-6")
         path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
 
-    section(class="py-10 px-4")
+    section(class="py-16 px-4")
       block body
   .drawer-side
     label.drawer-overlay(for='my-drawer', aria-label='close sidebar')
