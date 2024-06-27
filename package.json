@@ -7,12 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx nodemon app.js",
     "tailwind": "npx tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch",
-    "start":"node app.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.19.2",
     "pug": "^3.0.3",
     "sqlite3": "^5.1.7"

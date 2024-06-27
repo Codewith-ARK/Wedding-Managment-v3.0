@@ -6,7 +6,8 @@ const adminRoutes = require('./router/adminRoutes.js');
 const app = express();
 
 // Parse URL-encoded bodies (as sent by HTML forms)
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use('/public',express.static(path.join(__dirname, 'public')))
 
 // Parse JSON bodies (as sent by API clients)

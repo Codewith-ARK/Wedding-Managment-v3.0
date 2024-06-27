@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Management System</title>
+
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+  <section class="flex justify-center flex-col items-center gap-3 w-screen h-screen">
+    <h1 class="text-5xl font-bold">Signup</h1>
+    <p>Create a new account</p>
+    <form id="signupForm" class="flex flex-col gap-3">
+      <input type="text" placeholder="Full Name" name="fullName" class="input input-bordered w-full max-w-xs" />
+      <input type="email" placeholder="Email" name="email" class="input input-bordered w-full max-w-xs" />
+      <input type="password" placeholder="Password" name="password" class="input input-bordered w-full max-w-xs" />
+      <div class="">
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">User</span>
+            <input type="radio" name="userType" class="radio" value="user" checked/>
+          </label>
+        </div>
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">Employee</span>
+            <input type="radio" name="userType" class="radio" value="employee" />
+          </label>
+        </div>
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">Admin</span>
+            <input type="radio" name="userType" class="radio" value="admin" />
+          </label>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-wide" type="submit">Singup</button>
+      <p>Already a user? Click here to <a href="/" class="link-primary">Login</a></p>
+    </form>
+  </section>
+
+  <script src="/public/js/formController.js"></script>
+</body>
+</html>
