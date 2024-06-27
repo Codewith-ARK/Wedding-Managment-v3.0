@@ -22,4 +22,5 @@ router.get("/venue/edit", (req, res) => {
 router.get("/venue/delete", (req, res) => {
   res.send(adminHTMl.deleteVenue());  
 });
+
 module.exports = router;

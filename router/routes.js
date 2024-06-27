@@ -78,4 +78,8 @@ router.get('/user/account',(req,res)=>{
   res.send(renderUserProfile());
 });
 
+router.get("/401", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "views", "pages", "401.html"));
+});
+
 module.exports = router;

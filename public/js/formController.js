@@ -50,7 +50,7 @@ if (location.href.includes("/signup")) {
       if(res.status === 200){
         location.href = "/"
       } else {
-        document.querySelector("#errorBox").textContent = res.message;
+        document.querySelector("#errorBox").textContent = res.error;
       }
     })
   });

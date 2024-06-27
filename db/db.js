@@ -52,16 +52,26 @@ DB.createUser = async (data) => {
     const hashedPass = await bcrypt.hash(data.password, 10);
 
     const query = `INSERT INTO users (username, email, password, avatar_link, user_type) VALUES (?, ?, ?, ?, ?)`;
-    db.run(query, [data.fullName, data.email, hashedPass, data.avatarLink, data.userType], function(err) {
-      if (err) {
-        return console.error('Error inserting user into users table: ', err.message);
-      }
-      console.log(`A new user has been inserted with rowid ${this.lastID}`);
+
+    // Wrap the database operation in a Promise
+    return new Promise((resolve, reject) => {
+      db.run(query, [data.fullName, data.email, hashedPass, data.avatarLink, data.userType], function(err) {
+        if (err) {
+          console.error('Error inserting user into users table: ', err.message);
+          reject(err); // Reject the promise with the error
+        } else {
+          console.log(`A new user has been inserted with rowid ${this.lastID}`);
+          resolve(true); // Resolve the promise with a success indicator
+        }
+      });
     });
+
   } catch (err) {
     console.error('Error hashing password: ', err.message);
+    throw err; // Throw the error to be caught elsewhere if needed
   }
 }
+
 
 DB.fetchUser = async (userEmail) => {
   const query = `SELECT * FROM users WHERE email = ?`;
