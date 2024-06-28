@@ -67,7 +67,8 @@ router.get("/dashboard", (req, res) => {
 });
 
 router.get("/venues", (req, res) => {
-  res.send(renderUserVenues());
+  const response = DB.fetchAllVenues();
+  res.send(renderUserVenues(response));
 });
 
 router.get("/user/reservations", (req, res) => {

@@ -19,10 +19,11 @@ if (location.href.includes("/login")) {
         if (res.status === 200) {
           sessionStorage.setItem('userId', res.data.userId);
           sessionStorage.setItem('userType', res.data.userType);
-          if(res.data.userType === 'admin'){
-            location.href = '/admin/'
+          if(sessionStorage.getItem('userType') === 'admin'){
+            location.href = "/admin"
+          } else {
+            location.href = "/dashboard";
           }
-          location.href = "/dashboard";
         } else {
           document.querySelector("#errorBox").textContent = res.message;
         }

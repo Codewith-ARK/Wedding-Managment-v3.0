@@ -3,29 +3,30 @@ const path = require("path");
 
 let adminHTMl = {};
 
-function renderAdminHmlFile(fileName) {
+function renderAdminHmlFile(fileName, data) {
   return pug.renderFile(
-    path.join(__dirname, "..", "views", "template", "admin", fileName)
+    path.join(__dirname, "..", "views", "template", "admin", fileName),
+    { venues: data }
   );
 }
 
-adminHTMl.adminDashboard = () =>{
+adminHTMl.adminDashboard = () => {
   return renderAdminHmlFile("dashboard.pug");
-}
+};
 
-adminHTMl.renderAdminView = () => {
-  return renderAdminHmlFile("venues.pug");
+adminHTMl.renderAdminView = (data) => {
+  return renderAdminHmlFile("venues.pug", data);
 };
 
 adminHTMl.addVenue = () => {
-  return renderAdminHmlFile('addVenue.pug')
-}
+  return renderAdminHmlFile("addVenue.pug");
+};
 
-adminHTMl.editVenue = () => {
-  return renderAdminHmlFile('editVenue.pug')
-}
+adminHTMl.editVenue = (data) => {
+  return renderAdminHmlFile("editVenue.pug", data);
+};
 
-adminHTMl.deleteVenue = ()=>{
-  return renderAdminHmlFile('deleteVenue.pug')
-}
+adminHTMl.deleteVenue = () => {
+  return renderAdminHmlFile("deleteVenue.pug");
+};
 module.exports = adminHTMl;
