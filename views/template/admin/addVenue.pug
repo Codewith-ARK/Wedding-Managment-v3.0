@@ -7,6 +7,11 @@ block body
   +heading('Add Venue')
   +subheading('Add a new venue')
 
-  +formInput('Venue Name', '')
-  +formInput('Venue Area', '')
-  +formInput('Venue Address', '')
+  
+  form(action="/admin/venue/new", method="post" class="") 
+    +formInput('Venue Name', 'name')
+    +formInput('Venue Address', 'address')
+    +formInput('Picture URL', 'pictureUrl')
+    +formInput('Venue Area', 'area')
+    +formInput('Venue Charges', 'charges')
+    button(type="submit" class="btn btn-primary mt-4") Add Venue 

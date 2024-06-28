@@ -13,10 +13,10 @@ block body
   +heading('Admin Dashboard')
   +subheading('...')
 
-  div(class="grid grid-cols-1 lg:grid-cols-4 gap-4")
+  div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4")
     +adminCard('View Venue','admin/venue/view')
-    +adminCard('Add Venue','admin/venue/edit/')
-    +adminCard('Edit Venue','admin/venue/edit/')
-    +adminCard('Delete Venue','admin/venue/delete/')
+    +adminCard('Add Venue','admin/venue/new')
+    +adminCard('Edit Venue','admin/venue/edit')
+    +adminCard('Delete Venue','admin/venue/delete')
 
 

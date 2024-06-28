@@ -1,8 +1,22 @@
 extends ../includes/sidebar
 
+mixin adminListItem(id, title, address, image_url)
+  div(class="border-b py-3 flex flex-col md:flex-row gap-3")
+    img(src=image_url class="object-cover rounded-xl h-60 aspect-[4/3]" alt="dummy image")
+    div(class="flex flex-col")
+      h1.text-4xl.font-bold=title
+      p=address
+    div(class="flex flex-grow items-end justify-end gap-3 *:flex-grow *:lg:flex-grow-0")
+      a(href=`/admin/venue/view/${id}` class="btn").btn View
+      a(href=`/admin/venue/edit/${id}` class="btn").btn Edit
+      a(href=`/admin/venue/delete/${id}`).btn.btn-outline.btn-error Delete
+
 block body
   +breadcrumb('Home','Admin','Venues','Edit Venue')
   +navigation()
 
   +heading('Edit Venue')
   +subheading('Edit details of a specific venue.')
+
+  each venue in venues
+    +adminListItem(venue.venue_id, venue.name, venue.address, venue.image_url)

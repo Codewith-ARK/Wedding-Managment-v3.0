@@ -8641,6 +8641,10 @@ html:has(.drawer-open.drawer-open) {
   margin-top: 0.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -8748,6 +8752,10 @@ html:has(.drawer-open.drawer-open) {
   display: none;
 }
 
+.aspect-\[4\/3\] {
+  aspect-ratio: 4/3;
+}
+
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
@@ -8758,6 +8766,10 @@ html:has(.drawer-open.drawer-open) {
 
 .h-5 {
   height: 1.25rem;
+}
+
+.h-60 {
+  height: 15rem;
 }
 
 .h-screen {
@@ -10626,6 +10638,10 @@ html:has(.drawer-open.drawer-open) {
   }
 }
 
+.\*\:flex-grow > * {
+  flex-grow: 1;
+}
+
 .hover\:font-bold:hover {
   font-weight: 700;
 }
@@ -10679,6 +10695,10 @@ html:has(.drawer-open.drawer-open) {
 
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .\*\:lg\:flex-grow-0 > * {
+    flex-grow: 0;
   }
 }
 
