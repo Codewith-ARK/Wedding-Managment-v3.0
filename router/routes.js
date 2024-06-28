@@ -1,6 +1,6 @@
 const express = require("express")
 const path = require("path");
-const { renderDashboard, renderUserVenues,renderReservations,renderUserProfile } = require("../utils/renderHTML");
+const { renderDashboard, renderUserVenues,renderReservations,renderUserProfile, renderVenue } = require("../utils/renderHTML");
 const DB = require("../db/db");
 const auth = require("../utils/auth");
 
@@ -66,10 +66,17 @@ router.get("/dashboard", (req, res) => {
   res.send(renderDashboard());
 });
 
-router.get("/venues", (req, res) => {
-  const response = DB.fetchAllVenues();
+router.get("/venues", async (req, res) => {
+  const response = await DB.fetchAllVenues();
   res.send(renderUserVenues(response));
 });
+
+router.get("/venue/view/:id", async (req, res) => {
+  const venueId = req.params.id;
+  const response = await DB.fetchVenueById(venueId);
+  res.send(renderVenue(response));
+});
+
 
 router.get("/user/reservations", (req, res) => {
   res.send(renderReservations());

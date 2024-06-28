@@ -12,7 +12,7 @@ mixin breadcrumb(...links)
           a(href=`/${link}`)=link
 
 mixin navigation()
-  a.btn.btn-sm.btn-outline Go back
+  button.btn.btn-sm.btn-outline(onclick="history.back()") Go back
 
 mixin formInput(labelText, name)
   div 
@@ -21,11 +21,11 @@ mixin formInput(labelText, name)
       label(for="" class="label-text")=labelText
     input(type="text" placeholder="" class="input input-bordered w-full max-w-xs" name=name)
 
-mixin card(name, address, image_url)
+mixin card(id, name, address, image_url)
   div(class="card card-compact")
     img(class="rounded-xl aspect-square object-cover w-full" src=image_url alt="Shoes")
     div(class="card-body")
       h2(class="card-title")=name
       p=address
       div(class="card-actions justify-end")
-        button(class="btn btn-outline") View Details
+        a(class="btn btn-outline" href=`/venue/view/${id}`) View Details

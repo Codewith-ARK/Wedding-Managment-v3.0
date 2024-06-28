@@ -1,0 +1,23 @@
+extends includes/sidebar
+
+block title
+  | WedMaster - #{venue.name}
+
+mixin venueDetails(title, address, image_url, capacity, price)
+  div(class="py-3 flex flex-col gap-3")
+    img(src=image_url class="object-cover rounded-xl h-[380px] w-fit" alt="venue image")
+    div(class="flex flex-col")
+      h1.text-4xl.font-bold=title
+      p.font-medium Address: #{address}
+      p.font-medium Seating Capacity: #{capacity} person
+      p.font-medium Price: $#{price}/per night
+
+block body
+  +breadcrumb('Home','Admin','Venues','View Venue')
+  +navigation()
+
+  +heading('View Venue')
+  +subheading('Details of the selected venue.')
+
+  // Assuming `venue` is passed to the template from the server
+  +venueDetails(venue.name, venue.address, venue.image_url, venue.seating_capacity, venue.charges)

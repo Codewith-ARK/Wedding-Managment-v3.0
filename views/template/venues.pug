@@ -1,5 +1,8 @@
 extends includes/sidebar
 
+block title
+  | WedMaster - Venues
+
 block body
   +breadcrumb('Home','Venues')
   +navigation()
@@ -8,8 +11,5 @@ block body
   +subheading('Browser all venues.')
 
   div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4")
-    +card
-    +card
-    +card
-    +card
-    +card
+    each v in venue
+      +card(v.venue_id, v.name, v.address, v.image_url)

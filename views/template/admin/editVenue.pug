@@ -7,9 +7,25 @@ mixin adminListItem(id, title, address, image_url)
       h1.text-4xl.font-bold=title
       p=address
     div(class="flex flex-grow items-end justify-end gap-3 *:flex-grow *:lg:flex-grow-0")
-      a(href=`/admin/venue/view/${id}` class="btn").btn View
-      a(href=`/admin/venue/edit/${id}` class="btn").btn Edit
-      a(href=`/admin/venue/delete/${id}`).btn.btn-outline.btn-error Delete
+      a(href=`/venue/view/${id}` class="btn").btn View
+      //- a(href=`/admin/venue/edit/${id}` class="btn").btn Edit
+      button(onclick=`document.getElementById('deleteModal-${id}').showModal()` class="btn btn-outline btn-error") Delete
+
+mixin deleteModal(id)
+  //- Open the modal using ID.showModal() method
+  dialog(class="modal modal-bottom sm:modal-middle" id=`deleteModal-${id}`)
+    .modal-box
+      h3.text-lg.font-bold Delete Venue
+      p.py-4 Are you sure you want to delete this venue?
+      .modal-action
+        form(method="dialog" class="flex gap-3")
+          //- if there is a button in form, it will close the modal
+          button.btn.btn-outline Cancel
+          button(type="button" onclick=`deleteVenue(${id})` class="btn btn-error") Confirm
+
+block title
+  | WedMaster - Edit Venue
+
 
 block body
   +breadcrumb('Home','Admin','Venues','Edit Venue')
@@ -20,3 +36,26 @@ block body
 
   each venue in venues
     +adminListItem(venue.venue_id, venue.name, venue.address, venue.image_url)
+    +deleteModal(venue.venue_id)
+
+  script.
+    function deleteVenue(id) {
+      console.log('working:', id)
+      fetch(`/admin/venue/delete/${id}`, {
+        method: 'DELETE'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('Venue deleted successfully');
+          location.reload(); // Refresh the page or update the UI accordingly
+        } else {
+          alert('Failed to delete venue: ' + data.message);
+        }
+        document.getElementById('deleteModal-' + id).close();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('deleteModal-' + id).close();
+      });
+    }

@@ -132,6 +132,33 @@ DB.fetchAllVenues = () => {
   });
 };
 
+DB.fetchVenueById = (id) => {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT * FROM venues WHERE venue_id = ?`;
+    db.get(query, [id], (err, row) => {
+      if (err) {
+        console.error('Error fetching venue:', err.message);
+        reject(err);
+      } else {
+        resolve(row);
+      }
+    });
+  });
+};
+
+DB.deleteVenue = (id) => {
+  return new Promise((resolve, reject) => {
+    const query = `DELETE FROM venues WHERE venue_id = ?`;
+    db.run(query, [id], function(err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve({ message: 'Venue deleted', changes: this.changes });
+      }
+    });
+  });
+};
+
 DB.fetchAllUsers = () => {
   const query = `SELECT * FROM users`;
 

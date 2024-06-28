@@ -9,4 +9,4 @@ block body
 
   div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4")
     each venue in venues
-      +card(venue.name, venue.address, venue.image_url)
+      +card(venue.venue_id, venue.name, venue.address, venue.image_url)
