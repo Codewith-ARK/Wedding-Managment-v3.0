@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcrypt');
 
-let db = new sqlite3.Database('./db/wedding-management.db', sqlite3.OPEN_READWRITE, (err) => {
+let db = new sqlite3.Database('./db/wedding-management.db', sqlite3.OPEN_CREATE | sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
     return console.error('Error connecting to DB: ', err.message);
   }
